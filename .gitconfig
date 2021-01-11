@@ -1,0 +1,29 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Deepak Bhat
+	email = dbhat@mscripts.com
+[alias]
+	ss = status
+	co = checkout
+	unstage = reset HEAD
+	cm = "commit -m"
+	uncmt = "reset --mixed HEAD~"
+	unadd = "restore --staged"
+	df = "diff --cached"
+	amend = commit -a --amend
+	cob = checkout -b
+	pushn = push -u origin
+	br = branch -vv
+	ff = fetch -p
+	sl = stash list
+	save = stash save
+	stashp = "stash pop"
+	reseth = "reset --hard"
+	deletemb = "!f() { git branch --merged ${1-main} | grep -v -e " ${1-main}$" -e " ${2-main}$" | xargs -r git branch -d; }; f"
+	deleteb = "!f() { git branch -vv | grep " gone]" |  grep -v "^*" | awk '{ print $1; }' | xargs -r git branch -${1}; }; f"
+	open = "!f() { REPO_URL=$(git config remote.origin.url); explorer ${REPO_URL%%.git}; }; f"
+	cake = log --date=format:'%d %b %Y' --diff-filter=A --name-only --pretty='%n%C(yellow bold)🎂️ %ad%Creset by (%C(blue bold)%h%Creset)'
