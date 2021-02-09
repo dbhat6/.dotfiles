@@ -1,0 +1,19 @@
+# Easier navigation: .., ..., ....,
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias k="kubectl"
+
+alias quit="exit"
+
+alias ll="ls -l"
+
+# Trim new lines and copy to clipboard
+alias c="tr -d '\n' | pbcopy"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
