@@ -7,13 +7,14 @@
 	name = Deepak Bhat
 	email = dbhat@mscripts.com
 [alias]
+	sts = status --short
 	ss = status
 	co = checkout
 	unstage = reset HEAD
-	cm = "commit -m"
-	uncmt = "reset --mixed HEAD~"
-	unadd = "restore --staged"
-	df = "diff --cached"
+	cm = commit -m
+	uncmt = reset --mixed HEAD~
+	unadd = restore --staged
+	df = diff --cached
 	amend = commit -a --amend
 	cob = checkout -b
 	pushn = push -u origin
@@ -21,14 +22,25 @@
 	ff = fetch -p
 	sl = stash list
 	save = stash save
-	stashp = "stash pop"
-	reseth = "reset --hard"
-	deletemb = "!f() { git branch --merged ${1-main} | grep -v -e " ${1-main}$" -e " ${2-main}$" | xargs -r git branch -d; }; f"
-	deleteb = "!f() { git branch -vv | grep " gone]" |  grep -v "^*" | awk '{ print $1; }' | xargs -r git branch -${1}; }; f"
+	stashp = stash pop
+	reseth = reset --hard
+	deletemb = "!f() { git branch --merged ${1-main} | grep -v -e  ${1-main}$ -e  ${2-main}$ | xargs -r git branch -d; }; f"
+	deleteb = "!f() { git branch -vv | grep  gone] |  grep -v ^* | awk '{ print $1; }' | xargs -r git branch -${1}; }; f"
 	open = "!f() { REPO_URL=$(git config remote.origin.url); explorer ${REPO_URL%%.git}; }; f"
 	cake = log --date=format:'%d %b %Y' --diff-filter=A --name-only --pretty='%n%C(yellow bold)🎂️ %ad%Creset by (%C(blue bold)%h%Creset)'
 	aliases = "!f() { git config -l | grep alias; }; f"
+	delunst = checkout -- .
+	deluntr = clean -fd
+	delignrd = clean -fdX
+	upindex = update-index --chmod=+x
+	lgpretty = "log --pretty=format:"%h%x09%an%x09%ad%x09%s""
+	subi = submodule init
+	subu = submodule update --remote
 [core]
 	editor = code --wait --new-window
+	sshCommand = ssh -i ~/.ssh/id_ra_cah
+	autocrlf = true
+	longpaths = true
+	excludesfile = ~/.gitignore
 [help]
 	autocorrect = 30

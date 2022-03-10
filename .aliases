@@ -1,19 +1,31 @@
 # Easier navigation: .., ..., ....,
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-
-alias k="kubectl"
-
-alias quit="exit"
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
 
 alias ll="ls -l"
 
-# Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+alias c="clear"
+
+alias quit="exit"
+
+alias now='date +"%T"'
+
+alias createpass="date +%s | sha256sum | base64 | head -c 16 ; echo"
+
+alias k="kubectl"
+
+alias kont="kubectl config current-context"
+
+alias kontuse="kubectl config use-context"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+function pwdf () {
+    echo "$1" | base64 --decode
+}
+alias decode='pwdf'
